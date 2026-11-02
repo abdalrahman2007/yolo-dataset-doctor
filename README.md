@@ -105,6 +105,7 @@ Run the automated test suite:
     
 ## Help 
 Run the helping command
+
 	python3 doctor.py -h
 
 ## Output
