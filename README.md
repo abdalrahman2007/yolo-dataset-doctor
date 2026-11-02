@@ -13,6 +13,44 @@ A lightweight Python command-line tool for detecting common problems in YOLO obj
 - Generate JSON validation reports
 - Support nested image and label directories
 
+## Real-World Test: Ultralytics COCO8
+
+YOLO Dataset Doctor was tested using the public [Ultralytics COCO8 dataset](https://docs.ultralytics.com/datasets/detect/).
+
+### Experiment
+
+We performed a controlled test:
+
+1. Downloaded the original COCO8 dataset.
+2. Ran YOLO Dataset Doctor against the original dataset.
+3. Confirmed that all 8 images had corresponding label files.
+4. Deliberately removed `000000000061.txt` from the validation labels.
+5. Ran the validator again.
+
+### Results
+
+| Metric | Original dataset | Modified dataset |
+|---|---:|---:|
+| Images | 8 | 8 |
+| Label files | 8 | 7 |
+| Issues found | 0 | 1 |
+
+### Detected problem
+
+The tool successfully detected the missing label:
+
+`val/000000000061`
+
+It also generated a JSON report containing the detected issue.
+
+### Test evidence
+
+![YOLO Dataset Doctor COCO8 controlled test](docs/images/coco8-missing-label-demo.png)
+
+**Conclusion:** YOLO Dataset Doctor successfully detected a deliberately introduced missing-label problem in a real public YOLO dataset.
+
+*This is a controlled demonstration, not a benchmark of annotation quality or model accuracy.*
+
 ## Requirements
 
 - Python 3.10 or newer
