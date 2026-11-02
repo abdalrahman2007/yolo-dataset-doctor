@@ -102,6 +102,24 @@ Custom directory names are supported:
 Run the automated test suite:
 
     python3 -m unittest discover -s tests -v
+    
+## Help 
+Run the helping command
+    python3 doctor.py -h
+
+## Output
+	usage: doctor.py [-h] [--classes CLASSES] [--images IMAGES] [--labels LABELS] dataset
+
+	Check YOLO detection datasets for common problems.
+
+	positional arguments:
+	  dataset            Dataset root folder
+
+	options:
+	  -h, --help         show this help message and exit
+	  --classes CLASSES
+	  --images IMAGES    Images folder name
+	  --labels LABELS    Labels folder name
 
 ## License
 
