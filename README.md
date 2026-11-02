@@ -105,7 +105,7 @@ Run the automated test suite:
     
 ## Help 
 Run the helping command
-    python3 doctor.py -h
+	python3 doctor.py -h
 
 ## Output
 	usage: doctor.py [-h] [--classes CLASSES] [--images IMAGES] [--labels LABELS] dataset
