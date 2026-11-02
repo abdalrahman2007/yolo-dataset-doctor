@@ -6,3 +6,4 @@ venv/
 .DS_Store
 dataset_doctor_report.json
 test_dataset/
+datasets/

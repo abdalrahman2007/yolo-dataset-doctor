@@ -51,6 +51,34 @@ It also generated a JSON report containing the detected issue.
 
 *This is a controlled demonstration, not a benchmark of annotation quality or model accuracy.*
 
+## Additional Test: Invalid YOLO Annotations
+
+We performed another controlled test using a separate copy of the Ultralytics COCO8 dataset.
+
+Three invalid annotation rows were deliberately introduced into a YOLO label file.
+
+### Errors introduced
+
+| Test | Invalid value | Result |
+|---|---|---|
+| Invalid class ID | `80` (valid IDs: 0–79) | Detected |
+| Out-of-range coordinate | `x_center = 1.5` | Detected |
+| Zero-width bounding box | `width = 0` | Detected |
+
+### Validation command
+
+```bash
+python3 doctor.py datasets/coco8-invalid-demo --classes 80
+```
+
+### JSON report
+
+The generated report identified all three invalid annotations, including their corresponding line numbers.
+
+**Result: 3 out of 3 deliberately introduced annotation errors detected.**
+
+*This is a controlled validation test, not a general dataset accuracy benchmark.*
+
 ## Requirements
 
 - Python 3.10 or newer
