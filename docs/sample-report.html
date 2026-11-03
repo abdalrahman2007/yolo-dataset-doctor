@@ -86,7 +86,7 @@ code {
         </div>
         <div class="card">
             <div>Issues Found</div>
-            <div class="number">3</div>
+            <div class="number">4</div>
         </div>
         <div class="card">
             <div>Status</div>
@@ -102,7 +102,7 @@ code {
                 <td>Invalid Annotation</td>
                 <td><code>datasets/coco8-invalid-demo/labels/train/000000000009.txt</code></td>
                 <td>Line 9: class ID 80 is outside 0–79</td>
-                <td>Review the annotation values and correct the reported line.</td>
+                <td>Review the reported line. Check class IDs, coordinate ranges, positive box dimensions, and whether the bounding box stays within image boundaries.</td>
             </tr>
             
 
@@ -111,7 +111,7 @@ code {
                 <td>Invalid Annotation</td>
                 <td><code>datasets/coco8-invalid-demo/labels/train/000000000009.txt</code></td>
                 <td>Line 10: x_center=1.5 is outside [0, 1]</td>
-                <td>Review the annotation values and correct the reported line.</td>
+                <td>Review the reported line. Check class IDs, coordinate ranges, positive box dimensions, and whether the bounding box stays within image boundaries.</td>
             </tr>
             
 
@@ -120,7 +120,14 @@ code {
                 <td>Invalid Annotation</td>
                 <td><code>datasets/coco8-invalid-demo/labels/train/000000000009.txt</code></td>
                 <td>Line 11: width and height must be positive</td>
-                <td>Review the annotation values and correct the reported line.</td>
+                <td>Review the reported line. Check class IDs, coordinate ranges, positive box dimensions, and whether the bounding box stays within image boundaries.</td>
+            </tr>
+            <tr>
+                <td><span class="severity">Error</span></td>
+                <td>Invalid Annotation</td>
+                <td><code>datasets/coco8-invalid-demo/labels/train/000000000009.txt</code></td>
+                <td>Line 12: bounding box extends outside image boundaries</td>
+                <td>Review the reported line. Check class IDs, coordinate ranges, positive box dimensions, and whether the bounding box stays within image boundaries.</td>
             </tr>
             </tbody></table>
 
