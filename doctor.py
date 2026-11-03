@@ -66,6 +66,19 @@ def check_label_file(path: Path, num_classes: int | None = None):
             errors.append(
                 f"Line {line_number}: width and height must be positive"
             )
+        x_center, y_center, width, height = coords
+
+        if width > 0 and height > 0:
+            x_min = x_center - width / 2
+            x_max = x_center + width / 2
+            y_min = y_center - height / 2
+            y_max = y_center + height / 2
+
+            if x_min < 0 or x_max > 1 or y_min < 0 or y_max > 1:
+                errors.append(
+                    f"Line {line_number}: bounding box extends "
+                    "outside image boundaries"
+                )
 
     return errors
 
@@ -178,7 +191,7 @@ def generate_html_report(dataset_name, images, labels, report):
     recommendations = {
         "missing_label": "Create the missing YOLO label file, or confirm that the image is intentionally unannotated.",
         "orphan_label": "Check whether the image is missing or the label filename is incorrect.",
-        "invalid_annotation": "Review the annotation values and correct the reported line."
+        "invalid_annotation": "Review the reported line. Check class IDs, coordinate ranges, positive box dimensions, and whether the bounding box stays within image boundaries."
     }
 
     rows = []

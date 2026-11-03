@@ -23,6 +23,26 @@ class TestLabelValidation(unittest.TestCase):
             self.check_text("0 0.5 0.5 0.2 0.2\n"),
             [],
         )
+        
+    def test_box_exceeds_right_boundary(self):
+        errors = self.check_text("0 0.90 0.5 0.30 0.2\n")
+        self.assertTrue(any("outside image boundaries" in e for e in errors))
+
+    def test_box_exceeds_left_boundary(self):
+        errors = self.check_text("0 0.10 0.5 0.30 0.2\n")
+        self.assertTrue(any("outside image boundaries" in e for e in errors))
+
+    def test_box_exceeds_bottom_boundary(self):
+        errors = self.check_text("0 0.5 0.90 0.2 0.30\n")
+        self.assertTrue(any("outside image boundaries" in e for e in errors))
+
+    def test_box_exceeds_top_boundary(self):
+        errors = self.check_text("0 0.5 0.10 0.2 0.30\n")
+        self.assertTrue(any("outside image boundaries" in e for e in errors))
+
+    def test_box_touching_image_boundaries_is_valid(self):
+        errors = self.check_text("0 0.5 0.5 1.0 1.0\n")
+        self.assertEqual(errors, [])
 
     def test_out_of_range_class(self):
         errors = self.check_text("22 0.5 0.5 0.2 0.2\n")
